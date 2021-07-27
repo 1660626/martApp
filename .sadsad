@@ -1,0 +1,31 @@
+{
+    "presets": ["module:metro-react-native-babel-preset",  "module:@babel/plugin-transform-react-jsx"],
+    "plugins": [
+      [
+        "babel-plugin-root-import", 
+        {
+          "rootPathPrefix": "~",    // Chúng ta cần cho babel biết "~"
+          "rootPathSuffix": "src"   // sẽ được convert thành "src"
+        }
+      ],
+      ["@babel/plugin-transform-react-jsx", {
+        "throwIfNamespace": false, // defaults to true
+        "runtime": "automatic", // defaults to classic
+        "importSource": "custom-jsx-library" // defaults to react
+      }]
+    ], 
+        "retainLines": true,
+    "env": {
+      "production": {
+        "plugins": [
+          [
+            "babel-plugin-root-import",
+            {
+              "rootPathPrefix": "~",
+              "rootPathSuffix": "src"
+            }
+          ]
+        ]
+      }
+    }
+  }
