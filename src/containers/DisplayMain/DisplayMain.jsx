@@ -37,7 +37,7 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Detail from "~containers/Detail";
-import HomeTab from "../Stack/HomeTab";
+import HomeTab from "~containers/Stack/HomeTab";
 
 const Stack = createStackNavigator();
 
