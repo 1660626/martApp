@@ -26,23 +26,23 @@ const BottomMenuItem = ({ title, isCurrent }) => {
   let iconName;
   let titleName = "";
   if (title === "Home") {
-    iconName = isCurrent ? "home-outline" : "home";
+    iconName = isCurrent ? "home" : "home-outline";
     titleName = "Trang chủ";
   } else if (title === "Chat") {
     titleName = "Tin nhắn";
     iconName = isCurrent
-      ? "chatbubble-ellipses-outline"
-      : "chatbubble-ellipses";
+      ? "chatbubble-ellipses"
+      : "chatbubble-ellipses-outline";
   } else if (title === "Notify") {
     titleName  = "Thông báo";
 
-    iconName = isCurrent ? "notifications-outline" : "notifications-sharp";
+    iconName = isCurrent ? "notifications" : "notifications-outline";
   } else if (title === "Account") {
     titleName  = "Tài khoản";
 
-    iconName = isCurrent ? "person-circle-outline" : "person-circle-sharp";
+    iconName = isCurrent ? "person-circle" : "person-circle-outline";
   }
-
+  titleName ="";
   return (
     <View
       style={{

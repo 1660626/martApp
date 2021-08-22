@@ -1,5 +1,7 @@
 import { Dimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import _ from "lodash";
+
 const { width, height } = Dimensions.get("window");
 
 const [shortDimension, longDimension] =
@@ -39,18 +41,18 @@ import moment from "moment";
 const now = moment().utcOffset("+07:00").format("YYYY-MM-DD HH:mm:ss");
 
 export const getTimeDifference = (Start, End = now) => {
-
   const timeStart = Start ? (Start === "now" ? now : Start) : 0;
   if (timeStart == 0) {
     return 0;
   }
 
   var diffr = moment.duration(moment(End).diff(moment(timeStart)));
-  
+
   var hours = parseInt(diffr.asHours());
   var minutes = parseInt(diffr.minutes());
   var seconds = parseInt(diffr.seconds());
   var diffTime = hours * 60 * 60 + minutes * 60 + seconds;
+
   return diffTime;
 };
 
@@ -67,8 +69,22 @@ export const getObjDiffTime = (diffTime) => ({
 
 export const formatNumber1 = (number = 0) => {
   return parseInt(number)?.toLocaleString() + " ₫";
-}
+};
 
-export const formatNumber= (number = 0) => {
-  return parseInt(Math.round(number/1000)*1000)?.toLocaleString('vi', {style : 'currency', currency : 'VND'}).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
+export const formatNumber = (number = 0) => {
+  return (
+    "₫ " +
+    parseInt(Math.round(number / 1000) * 1000)
+      ?.toLocaleString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+  );
+};
+
+export const averageRatings = (arrRating) => {
+  let totalRating = _.sum(arrRating);
+  let totalRes = 0;
+  for (let i = 0; i < arrRating.length; i++) {
+    totalRes += arrRating[i] * (i + 1);
+  }
+  return Math.round((totalRes / totalRating) * 2) / 2;
+};

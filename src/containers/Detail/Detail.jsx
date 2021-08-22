@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef , useCallback} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import {
   View,
@@ -10,7 +10,12 @@ import {
   Animated,
   Image,
 } from "react-native";
-import { Feather, SimpleLineIcons, AntDesign } from "@expo/vector-icons";
+import {
+  Feather,
+  SimpleLineIcons,
+  AntDesign,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import {
   Insets,
   dWidth,
@@ -22,115 +27,20 @@ import {
   mvs,
   formatNumber,
 } from "~helper";
+import ProductReviews from "~components/Product/ProductReviews/ProductReviews";
+import HeaderDetail from "./HeaderDetail/index";
+import ProductDescription from "../../components/Product/ProductDescription/ProductDescription";
 
 const Detail = ({ navigation, route }) => {
   const { product, priceNew } = route.params;
-  const [activeHeart, setActiveHeart] = useState(false);
-  const [animatedValue, setAnimatedValue] = useState(`rgba(255, 255, 255,0)`);
-  const [shadowOpacity, setshadowOpacity] = useState(0.2);
-  const [shadowOpacityAndroid, setshadowOpacityAndroid] = useState(8);
+  console.log(navigation);
 
-
-
-
-  const [textShown, setTextShown] = useState(false);
-  const [numLines, setNumLines] = useState(undefined);
-
-  const toggleTextShown = () => {
-    setTextShown(!textShown);
-  };
-
-  useEffect(() => {
-    setNumLines(textShown ? undefined : 3);
-  }, [textShown]);
-
-  const onTextLayout = useCallback(
-    (e) => {
-      if (e.nativeEvent.lines.length > 3 && !textShown) {
-        setNumLines(3);
-      }
-    },
-    [textShown],
-  );
   return (
     <View>
-      <View
-        style={{
-          backgroundColor: animatedValue,
-          position: "absolute",
-          top: 0,
-          flex: 1,
-          alignSelf: "stretch",
-          right: 0,
-          left: 0,
-          zIndex: 10000,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: vs(10),
-            marginTop: vs(Insets().top) + 10,
-            marginBottom: 10,
-          }}
-        >
-          <View>
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              style={[
-                styles.Cart,
-                styles.Shadow,
-                {
-                  shadowOpacity: shadowOpacity,
-                  elevation: shadowOpacityAndroid,
-                },
-              ]}
-            >
-              <AntDesign name="left" size={ms(20)} color="black" />
-            </TouchableOpacity>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={[
-                styles.Cart,
-                styles.Shadow,
-                {
-                  shadowOpacity: shadowOpacity,
-                  elevation: shadowOpacityAndroid,
-                },
-              ]}
-              onPress={() => setActiveHeart(!activeHeart)}
-            >
-              {/* <AntDesign name="hearto" size={ms(22)} color="black" /> */}
-              <AntDesign
-                name={activeHeart ? "hearto" : "heart"}
-                size={ms(20)}
-                color={activeHeart ? "black" : "#ff6162"}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.Cart,
-                styles.Shadow,
-                {
-                  marginLeft: vs(10),
-                  shadowOpacity: shadowOpacity,
-                  elevation: shadowOpacityAndroid,
-                },
-              ]}
-            >
-              <Feather name="shopping-bag" size={ms(20)} color="#5cc16b" />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
+      <HeaderDetail   navigation={navigation}/>
       <ScrollView
         onScroll={(event) => {
           const scrolling = event.nativeEvent.contentOffset.y;
-          console.log(scrolling);
-
           // if (scrolling > 50) {
           //   setAnimatedValue(
           //     `rgba(255, 255, 255, ${
@@ -147,122 +57,231 @@ const Detail = ({ navigation, route }) => {
           // }
         }}
         scrollEventThrottle={16}
+        style={{
+          paddingHorizontal: 15,
+          backgroundColor: "#fff",
+        }}
       >
-        <View style={{ height: 3000, backgroundColor: "white" }}>
-          <View style={{ width: "100%", height: 300, padding: 80 }}>
-            <Image
-              style={{
-                flex: 1,
-                height: undefined,
-                width: undefined,
-                resizeMode: "contain",
-              }}
-              source={product.img}
-              alt="Alternate Text"
-            />
-          </View>
+        <View style={{ marginBottom: 100 }}>
           <View>
+            <View
+              style={{
+                width: "100%",
+                height: 300,
+                marginTop: 80,
+                padding: 30,
+              }}
+            >
+              <Image
+                style={{
+                  flex: 1,
+                  height: undefined,
+                  width: undefined,
+                  resizeMode: "contain",
+                }}
+                source={product.img}
+                alt="Alternate Text"
+              />
+            </View>
+
             <Text
               style={{
-                paddingHorizontal: 20,
                 fontSize: 20,
                 fontWeight: "bold",
+                color: "black",
               }}
             >
               {product.name}
             </Text>
-            <Text
-              style={{
-                paddingHorizontal: 20,
-                fontWeight: "400",
-                lineHeight: 15,
-                fontSize: 16,
-                color: "#a9a9b1",
-                marginTop: 8,
-              }}
-            >
-              {"0.8Kg - 1Kg"}
-            </Text>
 
-            <Text
+            <View
               style={{
-                paddingHorizontal: 20,
-                fontSize: 20,
-                fontWeight: "bold",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
                 marginTop: 10,
-                color: "#ff6162",
               }}
             >
-              {formatNumber(priceNew)}
-            </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: "bold",
+                  color: "#ff6162",
+                }}
+              >
+                {formatNumber(priceNew)}
+              </Text>
 
+              <Text
+                style={{
+                  backgroundColor: "#ff6162",
+                  paddingHorizontal: 5,
+                  fontWeight: "600",
+                  fontSize: 18,
+                  color: "#fff",
+                  marginLeft: 15,
+                }}
+              >
+                {`-${product.sale}%`}
+              </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  color: "#a9a9b1",
+                  fontWeight: "600",
+                  fontSize: 16,
+                  textDecorationLine: "line-through",
+                }}
+              >
+                {formatNumber(product.price)}
+              </Text>
+            </View>
+          </View>
+          <View style={{}}>
             <Text
               style={{
-                paddingHorizontal: 20,
                 fontSize: 16,
                 fontWeight: "bold",
-                marginTop: 15,
+                color: "black",
+                marginVertical: 15,
+              }}
+            >
+              Chi tiết sản phẩm:
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <View flex={2}>
+                <Text style={{}}>Thương hiệu</Text>
+                <Text style={{}}>Mã</Text>
+              </View>
+              <View flex={3}>
+                <Text style={{ fontSize: 14, color: "#666" }}>
+                  {product.brand}
+                </Text>
+                <Text style={{ fontSize: 14, color: "#666" }}>
+                  {product.code}
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "bold",
+                marginVertical: 15,
+                color: "black",
               }}
             >
               Mô tả sản phẩm:
             </Text>
+            <ProductDescription/>
+          </View>
+
+          <View>
             <Text
               style={{
-                paddingHorizontal: 20,
                 fontSize: 16,
-                marginTop: 15,
-              }}
-              onTextLayout={onTextLayout} numberOfLines={numLines}
-              ellipsizeMode="tail"
-            >
-              Rau củ quả tươi thường chứa rất nhiều chất dinh dưỡng thiết yếu
-              cho cơ thể của chúng ta nhưng theo thói quen chung hiện nay, bạn
-              thường mua nhiều loại thực phẩm tươi ngon và bảo quản trong tủ
-              lạnh để chế biến món ăn trong cả tuần, chính thói quen này có thể
-              dẫn đến những ảnh hưởng nghiêm trọng đến sức khỏe của chúng ta nếu
-              không biết cách bảo quản thực phẩm đúng cách sau khi mua về. Bài
-              viết sau đây sẽ giúp bạn biết cách bảo quản thực phẩm tốt nhất cho
-              mình, vừa bảo đảm được giá trị dinh dưỡng vừa chắc chắn giúp bạn
-              giữ được độ tươi ngon của thực phẩm mà bạn mua về. 
-            </Text>
+                fontWeight: "bold",
+                marginVertical: 15,
 
-          
-            <TouchableOpacity onPress={toggleTextShown}>
+                color: "black",
+              }}
+            >
+              Đánh giá sản phẩm
+            </Text>
+            <ProductReviews rating={product.ratingObj} />
+          </View>
+        </View>
+      </ScrollView>
+
+      <View
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: "white",
+          paddingHorizontal: vs(20),
+          borderRadius: 10,
+          shadowOffset: { width: 0, height: 2 },
+          shadowColor: "#000",
+          shadowRadius: 5.0,
+          shadowOpacity: 0.26,
+          elevation: 3,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            marginVertical: vs(10),
+          }}
+        >
+          <View style={{ width: "50%", paddingRight: 5 }}>
+            <TouchableOpacity
+              style={{
+                borderColor: "#5cc16b",
+                borderRadius: 5,
+                height: 45,
+                justifyContent: "center",
+                borderWidth: 2,
+              }}
+            >
+              {/* <MaterialIcons
+                name="add-shopping-cart"
+                style={{
+                  color: "#fff",
+                  alignSelf: "center",
+                }}
+                size={ms(30)}
+                color="black"
+              /> */}
               <Text
                 style={{
-                  paddingHorizontal: 20,
-                  fontSize: 16,
-                  marginTop: 5,
+                  fontSize: ms(16),
                   color: "#5cc16b",
                   fontWeight: "bold",
-                  textAlign: "right"
+                  alignSelf: "center",
+                  // textTransform: "uppercase",
                 }}
-               >
-               {textShown ? 'Thu gọn' : 'Xem thêm'}
+              >
+                Thêm vào giỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ width: "50%" }}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#5cc16b",
+                borderRadius: 5,
+                height: 45,
+                justifyContent: "center",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: ms(16),
+                  color: "#fff",
+                  fontWeight: "bold",
+                  alignSelf: "center",
+                  // textTransform: "uppercase",
+                }}
+              >
+                Mua ngay
               </Text>
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  Cart: {
-    justifyContent: "center",
-    height: ms(40),
-    width: ms(40),
-
-    padding: 10,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-  },
-  Shadow: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowColor: "#000",
-    shadowRadius: 5.0,
-  },
-});
 
 export default Detail;

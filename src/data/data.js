@@ -6,6 +6,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1001",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Cà Rốt Đà Lạt Hữu Cơ Tươi Sạch",
@@ -14,6 +26,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1002",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Cải Thìa Đà Lạt Tươi Xanh Mới Về Giao Nhanh HCM",
@@ -22,6 +46,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1003",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Cải Ngọt Đà Lạt Tươi Xanh Giao Nhanh 1-2h HCM",
@@ -30,6 +66,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1004",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "2 Trái Bắp Nấu Ăn Không Già Không Non",
@@ -38,6 +86,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1005",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Hành Tây Củ Tươi Ngon",
@@ -46,6 +106,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1006",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 3) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Khoai Tây Tươi Ngon Bổ Dưỡng",
@@ -54,6 +126,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1007",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 4) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Hành Lá Đà Lạt Tươi Xanh",
@@ -62,6 +146,18 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1008",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 4) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
   {
     name: "Đậu Bắp Xanh Cao Sản 1KG",
@@ -70,5 +166,17 @@ export const hotBanner1 = [
     sale: Math.floor(Math.random() * 10) + 10,
     // priceNew: (priceOld * (100 - sale)) / 100,
     _id: "1009",
+    ratingObj: {
+      ratings: [
+        Math.floor(Math.random() * 1) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 2) + 1,
+        Math.floor(Math.random() * 4) + 1,
+        Math.floor(Math.random() * 5) + 1,
+      ],
+      views: Math.floor(Math.random() * 906) + 1,
+    },
+    brand: "Tạp hoá ECO",
+    code: `ECO${Math.floor(100000 + Math.random() * 900000)}`,
   },
 ];

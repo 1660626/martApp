@@ -17,34 +17,22 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 
 import { AntDesign } from "@expo/vector-icons";
-import {
-  s,
-  vs,
-  ms,
-  mvs,
-  Insets,
-  dWidth,
-  dHeight,
-  waitings,
-  Item,
-} from "~helper";
+import { s, vs, ms, mvs, Insets, dWidth, dHeight, waitings } from "~helper";
 import { SliderBox } from "~components/SliderBox";
 import FlashSale from "~components/FlashSale";
 import Header from "~containers/Header";
 import CategoriesList from "~components/Categories/CategoriesList";
 import ProductCard from "~components/Card/ProductCard";
 import { hotBanner1 } from "~data/data.js";
+import HotCategories from "./HotCategories/HotCategories";
 const Home = ({ navigation, route }) => {
+  console.log(navigation);
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     waitings(2000).then(() => setRefreshing(false));
   }, []);
-
-  const onPressLearnMore = async () => {
-    console.log("Done.");
-  };
 
   const images = [
     // require("~/assets/image/banner/banner01.png"),
@@ -62,12 +50,7 @@ const Home = ({ navigation, route }) => {
     require("~/assets/image/banner/banner15.png"),
     require("~/assets/image/banner/banner16.png"),
   ];
- 
-  const hotBanner = [
-    require("~/assets/hotBanner03.jpg"),
-    require("~/assets/hotBanner01.jpg"),
-    require("~/assets/hotBanner02.jpg"),
-  ];
+
   return (
     <View
       style={{
@@ -89,7 +72,7 @@ const Home = ({ navigation, route }) => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <View style={styles.viewBannerStyle}>
+        {/* <View style={styles.viewBannerStyle}>
           <SliderBox
             parentWidth={dWidth * 0.85}
             images={images}
@@ -108,65 +91,23 @@ const Home = ({ navigation, route }) => {
             imageLoadingColor="#2196F3"
             activeOpacity={0.9}
           />
-        </View>
+        </View> */}
 
         <View
           style={{
             backgroundColor: "#FFFFFF",
             flex: 1,
+            marginTop: 10,
+            paddingHorizontal: vs(10),
           }}
         >
-          <View
-            style={{
-              marginTop: 10,
-              paddingHorizontal: vs(10),
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              Danh mục nổi bật
-            </Text>
+          <HotCategories />
 
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              {hotBanner.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={{
-                    justifyContent: "center",
-                    flex: 1,
-                    height: 70,
-                    paddingRight: index !== hotBanner.length - 1 ? vs(10) : 0,
-                  }}
-                >
-                  <Image
-                    style={{ width: "100%", resizeMode: "contain" }}
-                    source={item}
-                    alt="Alternate Text"
-                  />
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-
-          <View
-            style={{
-              marginTop: 10,
-              paddingHorizontal: vs(10),
-            }}
-          >
+          <View style={{ marginTop: 15 }}>
             <FlashSale
               size={12}
               startTime="now"
-              endTime={"2021-07-27 23:59:59"}
+              endTime={"2021-08-27 23:59:59"}
             />
             <ScrollView
               horizontal={true}
@@ -185,67 +126,15 @@ const Home = ({ navigation, route }) => {
             </ScrollView>
           </View>
 
-          {/* <View style={{ marginTop: 10 }}>
-
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              {listCategory.map((item, index) => (
-                <View
-                  key={index}
-                  style={{
-                    flexDirection: "column",
-                    alignItems: "center",
-                    marginHorizontal: vs(10),
-                    shadowColor: "#000",
-                    shadowOffset: {
-                      width: 0,
-                      height: 4,
-                    },
-                    shadowOpacity: 0.3,
-                    shadowRadius: 4.65,
-                  }}
-                >
-                  <View
-                    style={{
-                      padding: ms(15),
-                      borderRadius: 15,
-                      backgroundColor: "white",
-                      elevation: 8,
-                    }}
-                  >
-                    <Image
-                      style={{ width: 50, height: 50 }}
-                      resizeMode={"cover"}
-                      source={item.img}
-                      alt="Alternate Text"
-                    />
-                  </View>
-                  <View>
-                    <Text
-                      style={{
-                        marginHorizontal: 5,
-                        marginTop: 10,
-                        textAlignVertical: "center",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        color: "rgba(0,0,0,0.7)",
-                      }}
-                    >
-                      {item.name}
-                    </Text>
-                  </View>
-                </View>
-              ))}
-            </ScrollView>
-          </View> */}
-
-          <View style={{ paddingHorizontal: vs(10), marginTop: 50 }}>
+          <View style={{ marginTop: 15, marginBottom: 500 }}>
             <CategoriesList />
           </View>
         </View>
+     
+     
       </ScrollView>
+   
+   
     </View>
   );
 };

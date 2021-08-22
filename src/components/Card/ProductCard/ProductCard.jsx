@@ -14,27 +14,28 @@ import {
   Item,
   formatNumber,
 } from "~helper";
+import StarRating from "../../StarRating/StarRating";
 
-const ProductCard = ({ product , navigation}) => {
-
-  const priceNew = ( product.price * (100 - product.sale)) / 100;
+const ProductCard = ({ product, navigation }) => {
+  const priceNew = (product.price * (100 - product.sale)) / 100;
   return (
     <TouchableOpacity
       style={{
-        width: 130,
-        height: 190,
+        width: 180,
+        height: 250,
+        paddingHorizontal: 5,
       }}
-      onPress={() => navigation.navigate('Details', {
-        product: product,
-        priceNew:priceNew,
-      })}
-      
-
+      onPress={() =>
+        navigation.navigate("Details", {
+          product: product,
+          priceNew: priceNew,
+        })
+      }
     >
       <View
         style={{
           position: "absolute",
-          backgroundColor: "tomato",
+          backgroundColor: "#ff6162",
           paddingHorizontal: 5,
           right: 0,
           top: 10,
@@ -45,7 +46,7 @@ const ProductCard = ({ product , navigation}) => {
             textAlign: "center",
             color: "white",
             fontWeight: "bold",
-            fontSize: 10,
+            fontSize: 12,
           }}
         >
           {`-${product.sale}%`}
@@ -53,10 +54,8 @@ const ProductCard = ({ product , navigation}) => {
       </View>
       <View
         style={{
-          // borderRadius: 15,
           flex: 1,
           padding: 15,
-          // backgroundColor: "blue",
         }}
       >
         <Image
@@ -67,51 +66,31 @@ const ProductCard = ({ product , navigation}) => {
         />
       </View>
       <View>
-        <View>
-          <Text
-            style={{
-              color: "tomato",
-              fontWeight: "600",
-              lineHeight: 14,
-              fontSize: 14,
-            }}
-          >
-            {formatNumber(priceNew)}
-          </Text>
-          {/* <Text
-            style={{
-              color: "#a9a9b1",
-              fontWeight: "600",
-              fontSize: 10,
-              textDecorationLine:"line-through"
-            }}
-          >
-            {formatNumber(priceOld)}
-          </Text> */}
-        </View>
         <Text
-          numberOfLines={1}
+          numberOfLines={2}
           ellipsizeMode="tail"
           style={{
-            fontWeight: "400",
+            fontWeight: "600",
             lineHeight: 15,
             fontSize: 13,
             color: "#262626",
-            marginTop: 8,
-
+            
           }}
         >
-          {product.name}
+          {product.name} 500g
         </Text>
+        <StarRating showRespon rating={product.ratingObj} />
+
         <Text
           style={{
-            fontWeight: "400",
-            lineHeight: 15,
-            fontSize: 13,
-            color: "#a9a9b1",
+            color: "#ff6162",
+            fontWeight: "bold",
+            lineHeight: 16,
+            fontSize: 16,
+            marginTop: 8,
           }}
         >
-          {"0.8Kg - 1Kg"}
+          {formatNumber(priceNew)}
         </Text>
       </View>
     </TouchableOpacity>
